@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Service {
 	
 	  private static final AtomicInteger COUNTER = new AtomicInteger();
-	  private final int id;
+	  private int id;
 	  private String name;
 	  private String url;
 	  private String status;
@@ -20,7 +20,7 @@ public class Service {
 	    this.status = "OK";
 	    this.url = url;
 	    this.lastchecked = LocalDateTime.now();
-	  }
+	  }	  
 
 	  public Service() {
 		  this.id = COUNTER.getAndIncrement();
@@ -43,6 +43,7 @@ public class Service {
 	  public int getId() {
 		  return id;
 	  }
+	  
 	  public LocalDateTime getLastChecked() {
 		  return lastchecked;
 	  }
