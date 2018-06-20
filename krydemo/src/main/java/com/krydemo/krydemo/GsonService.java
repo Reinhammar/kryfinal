@@ -27,8 +27,8 @@ public class GsonService {
 	   public void addNew(Service service) {
 		   try {
 			  
-			PrintWriter writer = new PrintWriter("database.json", "UTF-8");
-			writer.print(service);
+			PrintWriter writer = new PrintWriter("C:/Users/TobiasReinhammar/database.json", "UTF-8");
+			
 			writer.close();
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block

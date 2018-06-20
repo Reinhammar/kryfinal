@@ -3,27 +3,37 @@ package com.krydemo.krydemo;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Service {
 	
 	  private static final AtomicInteger COUNTER = new AtomicInteger();
-	  private int id;
+	  private String id;
 	  private String name;
 	  private String url;
 	  private String status;
-	  private LocalDateTime lastchecked;
+	  private String lastCheck;
 
-	  public Service(String name, String url) {
-	    this.id = COUNTER.getAndIncrement();
+	  public Service(String name, String url, String lastCheck, String status, String id) {		  
+		this.id = id;		
 	    this.name = name;
-	    this.status = "OK";
+	    this.status = status;
 	    this.url = url;
-	    this.lastchecked = LocalDateTime.now();
-	  }	  
+	    this.lastCheck = lastCheck;
+	  }
+	  
+	  public Service createNewService(String name, String url) {
+		  String status = "OK";
+		  String lastCheck = LocalDateTime.now().toString();
+		  String id = UUID.randomUUID().toString();
+
+		return new Service(name, url, lastCheck, status, id);
+		
+	  }
 
 	  public Service() {
-		  this.id = COUNTER.getAndIncrement();
+		  this.id = UUID.randomUUID().toString();
 	  }
 
 	  public String getName() {
@@ -40,16 +50,16 @@ public class Service {
 		  this.url = url;
 	 }
 
-	  public int getId() {
+	  public String getId() {
 		  return id;
 	  }
 	  
-	  public LocalDateTime getLastChecked() {
-		  return lastchecked;
+	  public String getLastCheck() {
+		  return lastCheck;
 	  }
 	  
-	  public void setLastChecked(LocalDateTime lastChecked) {
-		  this.lastchecked = lastChecked;
+	  public void setLastCheck(String lastCheck) {
+		  this.lastCheck = lastCheck;
 	  }
 
 	  public String getStatus() {
